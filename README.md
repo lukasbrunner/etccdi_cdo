@@ -40,7 +40,7 @@ To calculate an indidual index, the scripts in [`index_scripts`](index_scripts) 
 ./calculate_etccdi_txx.sh infile.nc outpath [-o]
 ```
 
-- `infile.nc`: The full path to the input file, which is expected to contain only a single variable, namely the daily maximum temperature `tasmax`. 
+- `infile.nc`: The full path to the input file, which is expected to contain only a single variable. By default this has to be named `tasmax` otherwise the name needs to be changed in the settings. 
 - `outpath`: The path where the results will be save, it can be identical to the path of the input file, the input will not be overwritten.
 - `-o`: An uptional flag, if set existing output will be overwritten.
 
@@ -65,6 +65,8 @@ The calculate all indices the script [`calculate_etccdi_all.sh`](calculate_etccd
 ```
 
 NOTE: all 7 inputs need to be given in that exact order. THERE IS CURRENTLY NO CHECKS FOR WONG ORDERS AND THE SCRIPTS WILL CALCUATE TXX ALSO BASED ON TASMIN IF PROVIDED WRONGLY!
+
+If there is not input for one or more of the parameters they can be replaces by any non-empty string. Trying to calculate indices based on them will fail but all other indices will still work. To avoid spamming of errors it is recommended to comment out indices with should not be calculated.
 
 ### Calculate all indices for multiple models or memebers
 
