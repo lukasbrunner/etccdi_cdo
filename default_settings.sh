@@ -2,8 +2,8 @@
 
 # default settings for the caclulation of ETCCDI indices
 
-mm=m  # output frequency: m=monthly
-freq=mon
+mm=m  # output frequency: m=monthly, y=yearly
+freq=mon  # NOTE: also adjust! mon or ann
 
 # percentile-based indices
 window=5  # running window size
