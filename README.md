@@ -80,6 +80,8 @@ There are several indices with slighly larger devaitions between cdo and ClimDex
 
 - GSL is highly likely to be slightly wrong in cdo for regions with an year-round growing season. The suspected reason is that a 6 consequtive days criterion is used leading to the first 5 days in a given year never being assigned as growing season. The cdo version hence has a maximum growing season length of 360 for MPI-ESM and GSL is undersetimated compared to ClimDexCalc2 in most of the southern hemisphre. 
 
+- TN10p, TN90p, TX10p, TX90p: the monthly output is shifted by one month. This means that e.g., the values for January 1850 are stored in February etc. This is currently corrected in post-processing by the corresponding scrips. NOTE: if the is ever fixed upstream, the post-processing fix needs to be removed IT DOES JUST SHIFT THE TIME BY ONE MONTH WITHOUT CHECKING IF THE ERROR EXISTS.
+
 - SDII has small but spatially coherent deviations between the two calculation methods of up to 0.5 mm/day for regions with very little precipitation (Sahara and Antarctica)
 - r95p and r99p both show spatially random deviations of up to 2mm/day
 - CSDI and WSDI both show spatially coherent deviations of up to 1 day
