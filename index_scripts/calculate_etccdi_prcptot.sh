@@ -23,7 +23,6 @@ cdo mul $infile -gtc,1 -mulc,$pr_factor $infile ${outfile}_wd.nc || { echo "ERRO
 
 if [ "$mm" == "m" ]; then
     cdo chname,$pr,$index -monsum ${outfile}_wd.nc $outfile.nc || { echo "ERROR"; exit 1; }
-    cdo chname,$pr,$index -monsum $infile ${outfile}_all-days.nc || { echo "ERROR"; exit 1; }
 else
     cdo chname,$pr,$index -yearsum ${outfile}_wd.nc $outfile.nc || { echo "ERROR"; exit 1; }
 fi

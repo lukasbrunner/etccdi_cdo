@@ -3,7 +3,6 @@ slurm*
 *~
 __pycache__/
 
-*.out
-*.err
+*.log
 
 sandbox/*

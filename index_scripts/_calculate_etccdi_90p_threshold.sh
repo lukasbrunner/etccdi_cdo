@@ -5,7 +5,7 @@ module purge
 module load cdo
 
 # calculate the 10th percentile threshold (helper function)
-index="90p" 
+index="90pETCCDI" 
 echo "Calculating $index"
 
 source functions.sh

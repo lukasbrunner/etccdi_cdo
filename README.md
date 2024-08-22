@@ -1,1 +1,1 @@
-# etccdi_cdo
+https://code.mpimet.mpg.de/projects/cdo/embedded/cdo_eca.pdf
