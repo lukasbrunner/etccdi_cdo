@@ -2,3 +2,8 @@
 slurm*
 *~
 __pycache__/
+
+*.out
+*.err
+
+sandbox/*
