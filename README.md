@@ -84,7 +84,7 @@ There are several indices with slighly larger devaitions between cdo and ClimDex
 - r95p and r99p both show spatially random deviations of up to 2mm/day
 - CSDI and WSDI both show spatially coherent deviations of up to 1 day
 
-Maps and time-series of all variables can be found under [`tests/compare_mpi-esm1-2-lr_cod-climdexcalc2.ipynb`](tests/compare_mpi-esm1-2-lr_cod-climdexcalc2.ipynb)
+Maps and time-series of all variables can be found under [`tests/compare_mpi-esm1-2-lr_cdo-climdexcalc2.ipynb`](tests/compare_mpi-esm1-2-lr_cdo-climdexcalc2.ipynb)
 
 Example data can be found at `/work/uc1275/LukasBrunner/data/etccdi_cdo`
 
