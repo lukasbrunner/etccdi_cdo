@@ -14,7 +14,7 @@ The repository is freely available under the [MPI License](./license)
 
 ### Settings
 
-By default the `default_settings.sh` file will be used, which might not work for all input files. For example, the variable names and unit for the precipitation variable can be changed here. For temperature Kelvin as well as degree Celsius work. Other settings that can be changed are the output frequency (monthly or annual) as well as the base-period and window size for seasonally running windows. The latter two are only used for percentile-based indices and ignored for the other indices. NOTE: some indices are only available for annual output, for these annual output will be enforces even when setting the frequency to monthly. 
+By default the [`default_settings.sh`](default_settings.sh) file will be used, which might not work for all input files. For example, the variable names and unit for the precipitation variable can be changed here. For temperature Kelvin as well as degree Celsius work. Other settings that can be changed are the output frequency (monthly or annual) as well as the base-period and window size for seasonally running windows. The latter two are only used for percentile-based indices and ignored for the other indices. NOTE: some indices are only available for annual output, for these annual output will be enforces even when setting the frequency to monthly. 
 
 NOTE: it is recommened to not change the `default_settings.sh` file but create a copy and link it, e.g.:
 
@@ -25,7 +25,7 @@ unlink settings.sh
 ln -s manual_settings.sh settings.sh
 ```
 
-The naming convention for output files can be adjusted by updating the `create_filename` function in `functions.sh`. By default the filename of the output is
+The naming convention for output files can be adjusted by updating the `create_filename` function in [`functions.sh`](functions.sh). By default the filename of the output is
 
 ```bash
 index_frequency__input-filename.nc  # or
@@ -34,7 +34,7 @@ index_running-window_base-period_frequency__input-filename.nc  # for percentile-
 
 ### Calculate individual indices
 
-To calculate an indidual index, the scripts in `./index_scripts` can be used. For the example of TXX (warmest day in a year/month)
+To calculate an indidual index, the scripts in [`index_scripts`](index_scripts) can be used. For the example of TXX (warmest day in a year/month)
 
 ```bash
 ./calculate_etccdi_txx.sh infile.nc outpath [-o]
@@ -58,7 +58,7 @@ The threshold file for the WSDI can be calculated using
 
 ### Calculate all indices
 
-The calculate all indices the script `calculate_etccdi_all.sh` can be used. If only a subset of indices are needed, they can be commented in or out there as needed. 
+The calculate all indices the script [`calculate_etccdi_all.sh`](calculate_etccdi_all.sh) can be used. If only a subset of indices are needed, they can be commented in or out there as needed. 
 
 ```bash
 ./calculate_etccdi_all.sh tasmax.nc tasmin.nc tas.nc pr.nc land_sea_fraction.nc outpath [-o, '']
@@ -68,7 +68,7 @@ NOTE: all 7 inputs need to be given in that exact order. THERE IS CURRENTLY NO C
 
 ### Calculate all indices for multiple models or memebers
 
-This is as easy as calling `calculate_etccdi_all.sh` in a separate script multiple times, potentially using a loop. An example is given in the file `calculate_etccdi_mpi-esm1-2-lr.sh` for a single model. 
+This is as easy as calling [`calculate_etccdi_all.sh`](calculate_etccdi_all.sh) in a separate script multiple times, potentially using a loop. An example is given in the file [`calculate_etccdi_mpi-esm1-2-lr.sh`](calculate_etccdi_mpi-esm1-2-lr.sh) for a single model. 
 
 ## Performance
 
@@ -84,7 +84,7 @@ There are several indices with slighly larger devaitions between cdo and ClimDex
 - r95p and r99p both show spatially random deviations of up to 2mm/day
 - CSDI and WSDI both show spatially coherent deviations of up to 1 day
 
-Maps and time-series of all variables can be found under `tests/compare_mpi-esm1-2-lr_cod-climdexcalc2.ipynb`
+Maps and time-series of all variables can be found under [`tests/compare_mpi-esm1-2-lr_cod-climdexcalc2.ipynb`](tests/compare_mpi-esm1-2-lr_cod-climdexcalc2.ipynb)
 
 Example data can be found at `/work/uc1275/LukasBrunner/data/etccdi_cdo`
 
