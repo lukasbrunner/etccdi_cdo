@@ -14,7 +14,9 @@ The repository is freely available under the [MPI License](./license)
 
 ### Settings
 
-By default the `default_settings.sh` file will be used, which might not work for all input files. For example, the variable names and unit for the precipitation variable can be changed here. For temperature Kelvin as well as degree Celsius work as variable. Other settings that can be changed are the output frequency (monthly or annual) as well as the base-period and window size for seasonally running windows. The latter two are only used for percentile-based indices and ignored for the other indices. NOTE: it is recommened to not change the `default_settings.sh` file but create a copy and link it, e.g.:
+By default the `default_settings.sh` file will be used, which might not work for all input files. For example, the variable names and unit for the precipitation variable can be changed here. For temperature Kelvin as well as degree Celsius work. Other settings that can be changed are the output frequency (monthly or annual) as well as the base-period and window size for seasonally running windows. The latter two are only used for percentile-based indices and ignored for the other indices. NOTE: some indices are only available for annual output, for these annual output will be enforces even when setting the frequency to monthly. 
+
+NOTE: it is recommened to not change the `default_settings.sh` file but create a copy and link it, e.g.:
 
 ```bash
 cp default_settings.sh manual_settings.sh
@@ -70,7 +72,7 @@ This is as easy as calling `calculate_etccdi_all.sh` in a separate script multip
 
 ## Performance
 
-Calculate all indices for MPI-ESM1-2-LR (192x96 = 18'432 grid cells) in the period 1961-2014 (19'710 days) on Levante takes about 1 hour (TODO). See `run_calculate_etccdi_mpi-esm1-2-lr.sh` for details about the ressources requested.   
+Calculate all indices for MPI-ESM1-2-LR (192x96 = 18'432 grid cells) in the period 1850-2014 (60'265 days) on Levante takes about 1 hour (TODO). See [`run_calculate_etccdi_mpi-esm1-2-lr.sh`](run_calculate_etccdi_mpi-esm1-2-lr.sh) for details about the ressources requested.   
 
 ## Testing and known bugs
 
