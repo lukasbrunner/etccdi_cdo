@@ -56,6 +56,8 @@ The threshold file for the WSDI can be calculated using
 ./_calculate_etccdi_90p_threshold.sh infile.nc outpath
 ```
 
+For GSL the second input is a land-sea fraction file. It it is not given a pseudo land-sea fraction file with only land will be used leading to output also over the ocean.
+
 ### Calculate all indices
 
 The calculate all indices the script [`calculate_etccdi_all.sh`](calculate_etccdi_all.sh) can be used. If only a subset of indices are needed, they can be commented in or out there as needed. 
@@ -64,7 +66,7 @@ The calculate all indices the script [`calculate_etccdi_all.sh`](calculate_etccd
 ./calculate_etccdi_all.sh tasmax.nc tasmin.nc tas.nc pr.nc land_sea_fraction.nc outpath [-o, '']
 ```
 
-NOTE: all 7 inputs need to be given in that exact order. THERE IS CURRENTLY NO CHECKS FOR WONG ORDERS AND THE SCRIPTS WILL CALCUATE TXX ALSO BASED ON TASMIN IF PROVIDED WRONGLY!
+NOTE: all 7 inputs need to be given in that exact order. 
 
 If there is not input for one or more of the parameters they can be replaces by any non-empty string. Trying to calculate indices based on them will fail but all other indices will still work. To avoid spamming of errors it is recommended to comment out indices with should not be calculated.
 
