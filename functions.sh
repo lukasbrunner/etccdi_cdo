@@ -85,18 +85,38 @@ skip_existing() {
         echo "File already exists, skipping."
         echo ${outfile}.nc
         exit 1
+    elif [ -f ${outfile}.nc ] && [ $overwrite == true ]; then
+        rm ${outfile}.nc
     fi
 }
 
 check_pr_unit() {
     module load netcdf-c
-    infile=$1
-    pr=$2
-    unit_pr_input="$3"
+    local infile=$1
+    local pr=$2
+    local unit_pr_input="$3"
     
     unit=$(ncdump -h $infile | grep -A 1 "${pr}:" | grep units | awk -F\" '{print $2}')
     if [ "$unit" != "$unit_pr_input" ]; then
         echo "infile unit ($unit) does not match expected unit ($unit_pr_input)"
+        echo $infile
+        exit 1        
+    fi
+}
+
+check_variable() {
+    module load netcdf-c
+    local infile=$1
+    local varn=$2
+    if [ ! -f $infile ]; then
+        echo "infile does not exist!"
+        echo $infile
+        exit 1
+    fi
+    if ncdump -h $infile | grep -q "${varn}("; then
+        :
+    else
+        echo "infile does not contain expected variable name $varn"
         echo $infile
         exit 1
     fi
