@@ -1,1 +1,1 @@
-../default_settings.sh
+../settings.sh

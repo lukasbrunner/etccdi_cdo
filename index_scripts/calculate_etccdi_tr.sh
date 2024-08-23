@@ -6,7 +6,7 @@ module load cdo
 
 # Number of tropical nights: Annual/Monthly count of days when TN (daily minimum temperature) > 20C.
 index="trETCCDI" 
-echo "Calculating $index" 
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculating $index" 
 
 source functions.sh
 # check input and provide `infile`, `outdir`, and `outfile_base`
@@ -16,6 +16,7 @@ source settings.sh
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
+check_variable $infile $tasmin
 
 if [ "$mm" == "m" ]; then
     mm="month"
@@ -24,4 +25,5 @@ else
 fi
 
 cdo etccdi_tr,20,freq=$mm $infile ${outfile}.nc || { echo "ERROR"; exit 1; }
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc

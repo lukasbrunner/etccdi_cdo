@@ -8,7 +8,7 @@ module load cdo
 
 # Percentage of days when TN > 90th percentile
 index="tn90pETCCDI" 
-echo "Calculating $index" 
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculating $index" 
 
 source functions.sh
 # check input and provide `infile`, `outdir`, and `outfile_base`
@@ -22,6 +22,7 @@ export CDO_PCTL_NBINS=$nbins
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
+check_variable $infile $tasmin
 
 # NOTE: rm=c -> set read_method “circular” which takes into account the last time steps at the begin of the time period and vise versa. 
 cdo ydrunmin,$window,rm=c $infile ${outfile}_ydrunmin.nc || { echo "ERROR"; exit 1; }
@@ -35,4 +36,5 @@ if [ "$mm" == "m" ]; then
 fi
 
 rm ${outfile}_ydrunmin.nc ${outfile}_ydrunmax.nc
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc

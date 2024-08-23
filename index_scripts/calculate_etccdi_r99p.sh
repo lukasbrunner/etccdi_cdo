@@ -6,7 +6,7 @@ module load cdo
 
 # Annual total PRCP when RR > 95p.
 index="r99pETCCDI"  
-echo "Calculating $index" 
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculating $index" 
 
 source functions.sh
 # check input and provide `infile`, `outdir`, and `outfile_base`
@@ -18,6 +18,7 @@ export CDO_PCTL_NBINS=302
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
+check_variable $infile $pr
 check_pr_unit $infile $pr "$unit_pr_input"
 
 # select only wet days (>1mm) but keep original unit in output file
@@ -31,5 +32,6 @@ cdo timpctl,99 ${outfile}_wd_baseperiod.nc -timmin ${outfile}_wd_baseperiod.nc -
 cdo chname,$pr,$index -yearsum -mul ${outfile}_wd.nc -gt ${outfile}_wd.nc ${outfile}_wd_baseperiod_99p.nc $outfile.nc || { echo "ERROR"; exit 1; }
 
 rm ${outfile}_wd.nc ${outfile}_wd_baseperiod.nc ${outfile}_wd_baseperiod_99p.nc
+echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc
 
