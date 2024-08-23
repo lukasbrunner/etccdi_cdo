@@ -4,7 +4,7 @@
 #SBATCH --partition=shared
 #SBATCH --ntasks-per-node=32
 #SBATCH --mem=40G
-#SBATCH --time=02:00:00
+#SBATCH --time=48:00:00
 #SBATCH --output=logfiles/%x-%j.log
 
 module purge
