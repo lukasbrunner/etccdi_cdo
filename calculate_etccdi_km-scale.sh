@@ -54,10 +54,8 @@ if [ -f $fn_tasmax ]; then
     echo "${out[@]}"
     
     # #  Percentage of days when TX < 10th percentile.
-    # ./index_scripts/calculate_etccdi_tx10p_insample.sh $fn_tasmax $savepath $ow
-    # ./index_scripts/calculate_etccdi_tx10p_insample.sh $fn_tasmax $savepath $ow
+    ./index_scripts/calculate_etccdi_tx10p_outsample.sh $fn_tasmax $fn_tasmax_10p $savepath $ow
     # Percentage of days when TX > 90th percentile
-    # ./index_scripts/calculate_etccdi_tx90p_insample.sh $fn_tasmax $savepath $ow
     ./index_scripts/calculate_etccdi_tx90p_outsample.sh $fn_tasmax $fn_tasmax_90p $savepath $ow
     # # Warm speel duration index: Annual count of days with at least 6 consecutive days when TX > 90th percentile
     ./index_scripts/calculate_etccdi_wsdi.sh $fn_tasmax $fn_tasmax_90p $savepath $ow
@@ -90,7 +88,7 @@ if [ -f $fn_tasmin ]; then
     echo "${out[@]}"
     
     #  Percentage of days when TN < 10th percentile.
-    ./index_scripts/calculate_etccdi_tn10p_insample.sh $fn_tasmin $savepath $ow
+    ./index_scripts/calculate_etccdi_tn10p_outsample.sh $fn_tasmin $fn_tasmin_90p $savepath $ow
     # Percentage of days when TN > 90th percentile.
     # ./index_scripts/calculate_etccdi_tn90p_insample.sh $fn_tasmin $savepath $ow
     ./index_scripts/calculate_etccdi_tn10p_outsample.sh $fn_tasmin $fn_tasmin_10p $savepath $ow
