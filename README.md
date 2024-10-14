@@ -8,7 +8,7 @@ The calculation of the indieces is implemented partly using the cdo native funct
 
 The implementation was evaluated against results from an R implementation of the same indices provided by the [ClimDexCalc2](https://bm1159.gitlab-pages.dkrz.de/plugins4freva/climdexcalc2/) tool as part of the Freva system on the German HPC system Levante. As test case the first member of the historical run of MPI-ESM1-2-LR in the period 1961-2014 is used. 
 
-The repository is freely available under the [MPI License](./license)
+The repository is freely available under the [MPI License](./license). If you use this repository for your work please consider acknowledging Lukas Brunner and Vidur Mithal. 
 
 ## Usage
 
