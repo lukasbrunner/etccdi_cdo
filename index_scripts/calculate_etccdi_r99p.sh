@@ -4,7 +4,7 @@
 module purge
 module load cdo
 
-# Annual total PRCP when RR > 95p.
+# Annual total PRCP when RR > 99p.
 index="r99pETCCDI"  
 echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculating $index" 
 

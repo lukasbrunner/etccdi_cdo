@@ -21,6 +21,10 @@ skip_existing $outfile $overwrite
 check_variable $infile $tasmin
 check_variable $infile2 10pETCCDI
 
-cdo etccdi_csdi $infile $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }
+cdo setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_365day.nc || { echo "ERROR"; exit 1; }
+
+cdo etccdi_csdi ${outfile}_365day.nc $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }
+
+rm ${outfile}_365day.nc
 echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc

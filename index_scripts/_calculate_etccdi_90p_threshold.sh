@@ -20,7 +20,7 @@ outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot 
 skip_existing $outfile $overwrite
 check_variable $infile $tasmax
 
-cdo selyear,$startboot/$endboot $infile ${outfile}_baseperiod.nc || { echo "ERROR"; exit 1; }
+cdo setcalendar,365_day -delete,month=2,day=29 -selyear,$startboot/$endboot $infile ${outfile}_baseperiod.nc || { echo "ERROR"; exit 1; }
 cdo ydrunmin,$window,rm=c ${outfile}_baseperiod.nc ${outfile}_ydrunmin.nc || { echo "ERROR"; exit 1; }
 cdo ydrunmax,$window,rm=c ${outfile}_baseperiod.nc ${outfile}_ydrunmax.nc || { echo "ERROR"; exit 1; }
 # NOTE: rm=c -> set read_method “circular” which takes into account the last time steps at the begin of the time period and vise versa. 

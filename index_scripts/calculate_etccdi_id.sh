@@ -18,12 +18,26 @@ outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot 
 skip_existing $outfile $overwrite
 check_variable $infile $tasmax
 
-if [ "$mm" == "m" ]; then
-    mm="month"
+
+
+unit=$(ncdump -h $infile | grep -A 1 "${tasmax}:" | grep units | awk -F\" '{print $2}')
+if [ "$unit" == "K" ]; then
+    thr="273.15"
 else
-    mm="year"
+    thr=0
 fi
 
-cdo etccdi_id,freq=$mm $infile ${outfile}.nc || { echo "ERROR"; exit 1; }
+if [ "$mm" == "m" ]; then
+    # mm="month"
+    cdo chname,$tasmax,$index -chunit,$unit,day -monsum -ltc,$thr $infile ${outfile}.nc
+else
+    # mm="year"
+    cdo chname,$tasmax,$index -chunit,$unit,day -yearsum -ltc,$thr $infile ${outfile}.nc
+    
+fi
+
+# DEBUG: outputs wrong time-steps -> calculate manually for now
+# cdo etccdi_id,freq=$mm $infile ${outfile}.nc || { echo "ERROR"; exit 1; }
+
 echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc
