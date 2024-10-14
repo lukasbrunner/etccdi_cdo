@@ -94,3 +94,45 @@ Maps and time-series of all variables can be found under [`tests/compare_mpi-esm
 
 Example data can be found at `/work/uc1275/LukasBrunner/data/etccdi_cdo`
 
+## CDO implementation details
+
+### Dedicated ETCCDI implementation
+
+```bash
+cdo etccdi_cdd
+cdo etccdi_csdi
+cdo etccdi_cwd
+cdo etccdi_fd
+# cdo etccdi_id
+cdo etccdi_r10mm
+cdo etccdi_r20mm
+cdo etccdi_rx1day
+cdo etccdi_rx5day
+cdo etccdi_su
+cdo etccdi_tn10p
+cdo etccdi_tn90p
+cdo etccdi_tr
+cdo etccdi_tx10p
+cdo etccdi_tx90p
+cdo etccdi_wsdi
+```
+### ECA implementation
+
+```bash
+cdo -eca_gsl  # GSL
+
+```
+
+### Manual implementation
+
+```bash
+cdo -monmean -sub  # DTR
+cdo -monsum/-yearsum  # PRCPTOT
+cdo -yearsum -mul -gt  # R95p
+cdo -yearsum -mul -gt  # R99p
+cdo -div -monsum  # SDII
+cdo -monmin  # TNn
+cdo -monmax  # TNx
+cdo -monmin  # TXn
+cdo -monmax  # TXx
+```
