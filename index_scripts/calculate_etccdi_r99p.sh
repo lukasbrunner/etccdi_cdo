@@ -31,7 +31,9 @@ cdo timpctl,99 ${outfile}_wd_baseperiod.nc -timmin ${outfile}_wd_baseperiod.nc -
 # sum of days exceeding percentile
 cdo chname,$pr,$index -yearsum -mul ${outfile}_wd.nc -gt ${outfile}_wd.nc ${outfile}_wd_baseperiod_99p.nc $outfile.nc || { echo "ERROR"; exit 1; }
 
-rm ${outfile}_wd.nc ${outfile}_wd_baseperiod.nc ${outfile}_wd_baseperiod_99p.nc
+# rm ${outfile}_wd.nc 
+rm ${outfile}_wd_baseperiod.nc 
+# rm ${outfile}_wd_baseperiod_99p.nc
 echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc
 
