@@ -25,9 +25,9 @@ cdo setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_365day.nc || {
 
 if [ "$mm" == "m" ]; then
     # NOTE: sub automatically copies time steps (direct gt does not)
-    cdo chname,$tasmax,$index -setunit,1 -monmean -gtc,0 -sub ${outfile}_365day.nc $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }
+    cdo chname,$tasmax,$index -setunit,"1" -monmean -gtc,0 -sub ${outfile}_365day.nc $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }
 else
-    cdo chname,$tasmax,$index -setunit,1 -yearmean -gtc,0 -sub ${outfile}_365day.nc $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }    
+    cdo chname,$tasmax,$index -setunit,"1" -yearmean -gtc,0 -sub ${outfile}_365day.nc $infile2 ${outfile}.nc || { echo "ERROR"; exit 1; }    
 fi
 
 rm ${outfile}_365day.nc

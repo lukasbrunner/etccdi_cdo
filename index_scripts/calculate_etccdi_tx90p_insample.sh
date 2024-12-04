@@ -25,9 +25,11 @@ skip_existing $outfile $overwrite
 check_variable $infile $tasmax
 
 # NOTE: rm=c -> set read_method “circular” which takes into account the last time steps at the begin of the time period and vise versa. 
-cdo ydrunmin,$window,rm=c -setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_ydrunmin.nc || { echo "ERROR"; exit 1; }
-cdo ydrunmax,$window,rm=c -setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_ydrunmax.nc || { echo "ERROR"; exit 1; }
-cdo -P 32 etccdi_tx90p,$window,$startboot,$endboot,$mm -setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_ydrunmin.nc ${outfile}_ydrunmax.nc ${outfile}.nc || { echo "ERROR"; exit 1; }
+cdo setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_365day.nc
+cdo ydrunmin,$window,rm=c ${outfile}_365day.nc ${outfile}_365day_ydrunmin.nc || { echo "ERROR"; exit 1; }
+cdo ydrunmax,$window,rm=c ${outfile}_365day.nc ${outfile}_365day_ydrunmax.nc || { echo "ERROR"; exit 1; }
+
+cdo -P 32 etccdi_tx90p,$window,$startboot,$endboot,$mm ${outfile}_365day.nc ${outfile}_365day_ydrunmin.nc ${outfile}_365day_ydrunmax.nc ${outfile}.nc || { echo "ERROR"; exit 1; }
 
 # echo "Fixing time shift for monthly output!"
 if [ "$mm" == "m" ]; then
@@ -35,6 +37,6 @@ if [ "$mm" == "m" ]; then
     mv ${outfile}_tmp.nc ${outfile}.nc
 fi
 
-rm ${outfile}_ydrunmin.nc ${outfile}_ydrunmax.nc
+rm ${outfile}_365day.nc ${outfile}_365day_ydrunmin.nc ${outfile}_365day_ydrunmax.nc
 echo "$(date +"%Y-%m-%d %H:%M:%S") - Calculated $index"
 echo ${outfile}.nc

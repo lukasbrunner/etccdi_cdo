@@ -18,7 +18,7 @@ freq="doy"  # set frequency to day of the year
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
-# check_variable $infile $tasmax
+check_variable $infile $tasmax
 
 cdo setcalendar,365_day -delete,month=2,day=29 -selyear,$startboot/$endboot $infile ${outfile}_baseperiod.nc || { echo "ERROR"; exit 1; }
 cdo ydrunmin,$window,rm=c ${outfile}_baseperiod.nc ${outfile}_ydrunmin.nc || { echo "ERROR"; exit 1; }
