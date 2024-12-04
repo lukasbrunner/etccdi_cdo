@@ -41,9 +41,9 @@ if [ -f $fn_tasmax ]; then
     # ------------------------------------------------------------------------
     # --- simplified version without bootstrapping ---------------------------
     # ------------------------------------------------------------------------
-    # out=$(./index_scripts/_calculate_etccdi_tx90p_threshold.sh $fn_tasmax $savepath $ow)
-    # echo "${out[@]}"
-    # fn_tasmax_90p=$(echo "${out[@]}" | tail -n 1)
+    out=$(./index_scripts/_calculate_etccdi_tx90p_threshold.sh $fn_tasmax $savepath $ow)
+    echo "${out[@]}"
+    fn_tasmax_90p=$(echo "${out[@]}" | tail -n 1)  # needed for WSDI
     # out=$(./index_scripts/_calculate_etccdi_tx10p_threshold.sh $fn_tasmax $savepath $ow)
     # echo "${out[@]}"
     # fn_tasmax_10p=$(echo "${out[@]}" | tail -n 1)
@@ -87,9 +87,9 @@ if [ -f $fn_tasmin ]; then
     # ------------------------------------------------------------------------
     # --- simplified version without bootstrapping ---------------------------
     # ------------------------------------------------------------------------
-    # out=$(./index_scripts/_calculate_etccdi_tn10p_threshold.sh $fn_tasmin $savepath $ow)
-    # echo "${out[@]}"
-    # fn_tasmin_10p=$(echo "${out[@]}" | tail -n 1)
+    out=$(./index_scripts/_calculate_etccdi_tn10p_threshold.sh $fn_tasmin $savepath $ow)
+    echo "${out[@]}"
+    fn_tasmin_10p=$(echo "${out[@]}" | tail -n 1)  # needed for CSDI
     # out=$(./index_scripts/_calculate_etccdi_tn90p_threshold.sh $fn_tasmin $savepath $ow)
     # echo "${out[@]}"
     # fn_tasmin_90p=$(echo "${out[@]}" | tail -n 1)
