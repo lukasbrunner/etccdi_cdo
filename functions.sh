@@ -59,7 +59,7 @@ create_filename() {
     local base="b${startboot}-${endboot}"
 
     is_perc_index=false
-    perc_indices=('10p' '90p' 'r95p' 'r99p' 'tn10p' 'tn90p' 'tx10p' 'tx90p')
+    perc_indices=('10p' '90p' 'r95p' 'r99p' 'tn10p' 'tn90p' 'tx10p' 'tx90p' 'wsdi' 'csdi')
     for perc_index in "${perc_indices[@]}"; do
         if [ $index == ${perc_index}ETCCDI ]; then
             is_perc_index=true
