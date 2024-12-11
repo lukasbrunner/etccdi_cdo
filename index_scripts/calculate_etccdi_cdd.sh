@@ -13,7 +13,7 @@ source functions.sh
 process_input $@
 
 source settings.sh  
-freq="ann"  # only annual output for this index; overwrite
+freq="full"  # only annual output for this index; overwrite
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
