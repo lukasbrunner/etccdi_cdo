@@ -29,7 +29,7 @@ cdo setcalendar,365_day -delete,month=2,day=29 $infile ${outfile}_365day.nc
 cdo ydrunmin,$window,rm=c ${outfile}_365day.nc ${outfile}_365day_ydrunmin.nc || { echo "ERROR"; exit 1; }
 cdo ydrunmax,$window,rm=c ${outfile}_365day.nc ${outfile}_365day_ydrunmax.nc || { echo "ERROR"; exit 1; }
 
-cdo -P 32 etccdi_tx10p,$window,$startboot,$endboot,$mm {outfile}_365day.nc ${outfile}_365day_ydrunmin.nc ${outfile}_365day_ydrunmax.nc ${outfile}.nc || { echo "ERROR"; exit 1; }
+cdo -P 32 etccdi_tx10p,$window,$startboot,$endboot,$mm ${outfile}_365day.nc ${outfile}_365day_ydrunmin.nc ${outfile}_365day_ydrunmax.nc ${outfile}.nc || { echo "ERROR"; exit 1; }
 
 # echo "Fixing time shift for monthly output!"
 if [ "$mm" == "m" ]; then
