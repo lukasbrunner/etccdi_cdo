@@ -44,14 +44,14 @@ if [ -f $fn_tasmax ]; then
     out=$(./index_scripts/_calculate_etccdi_tx90p_threshold.sh $fn_tasmax $savepath $ow)
     echo "${out[@]}"
     fn_tasmax_90p=$(echo "${out[@]}" | tail -n 1)  # needed for WSDI
-    # out=$(./index_scripts/_calculate_etccdi_tx10p_threshold.sh $fn_tasmax $savepath $ow)
-    # echo "${out[@]}"
-    # fn_tasmax_10p=$(echo "${out[@]}" | tail -n 1)
+    out=$(./index_scripts/_calculate_etccdi_tx10p_threshold.sh $fn_tasmax $savepath $ow)
+    echo "${out[@]}"
+    fn_tasmax_10p=$(echo "${out[@]}" | tail -n 1)
 
-    # #  Percentage of days when TX < 10th percentile.
-    # ./index_scripts/calculate_etccdi_tx10p_outsample.sh $fn_tasmax $fn_tasmax_10p $savepath $ow
-    # # Percentage of days when TX > 90th percentile
-    # ./index_scripts/calculate_etccdi_tx90p_outsample.sh $fn_tasmax $fn_tasmax_90p $savepath $ow
+    #  Percentage of days when TX < 10th percentile.
+    ./index_scripts/calculate_etccdi_tx10p_outsample.sh $fn_tasmax $fn_tasmax_10p $savepath $ow
+    # Percentage of days when TX > 90th percentile
+    ./index_scripts/calculate_etccdi_tx90p_outsample.sh $fn_tasmax $fn_tasmax_90p $savepath $ow
     # ------------------------------------------------------------------------
     # ------------------------------------------------------------------------
     
@@ -90,13 +90,13 @@ if [ -f $fn_tasmin ]; then
     out=$(./index_scripts/_calculate_etccdi_tn10p_threshold.sh $fn_tasmin $savepath $ow)
     echo "${out[@]}"
     fn_tasmin_10p=$(echo "${out[@]}" | tail -n 1)  # needed for CSDI
-    # out=$(./index_scripts/_calculate_etccdi_tn90p_threshold.sh $fn_tasmin $savepath $ow)
-    # echo "${out[@]}"
-    # fn_tasmin_90p=$(echo "${out[@]}" | tail -n 1)
-    # #  Percentage of days when TN < 10th percentile.
-    # ./index_scripts/calculate_etccdi_tn90p_outsample.sh $fn_tasmin $fn_tasmin_90p $savepath $ow
-    # # Percentage of days when TN > 90th percentile.
-    # ./index_scripts/calculate_etccdi_tn10p_outsample.sh $fn_tasmin $fn_tasmin_10p $savepath $ow
+    out=$(./index_scripts/_calculate_etccdi_tn90p_threshold.sh $fn_tasmin $savepath $ow)
+    echo "${out[@]}"
+    fn_tasmin_90p=$(echo "${out[@]}" | tail -n 1)
+    #  Percentage of days when TN < 10th percentile.
+    ./index_scripts/calculate_etccdi_tn90p_outsample.sh $fn_tasmin $fn_tasmin_90p $savepath $ow
+    # Percentage of days when TN > 90th percentile.
+    ./index_scripts/calculate_etccdi_tn10p_outsample.sh $fn_tasmin $fn_tasmin_10p $savepath $ow
     # ------------------------------------------------------------------------
     # ------------------------------------------------------------------------
     
@@ -151,8 +151,6 @@ if [ -f $fn_pr ]; then
     ./index_scripts/calculate_etccdi_rx5day.sh $fn_pr $savepath $ow
     # Simple pricipitation intensity index: Let RRwj be the daily precipitation amount on wet days, w (RR ≥ 1mm) in period j.
     ./index_scripts/calculate_etccdi_sdii.sh $fn_pr $savepath $ow
-    # Annual total precipitation in wet days.
-    ./index_scripts/calculate_etccdi_prcptot.sh $fn_pr $savepath $ow
     
     # Optional: Annual count of days when PRCP≥ nnmm, nn is a user defined threshold
 

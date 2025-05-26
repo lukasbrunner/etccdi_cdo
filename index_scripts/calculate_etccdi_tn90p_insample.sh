@@ -4,7 +4,7 @@
 # TODO: check the file provieded contains the base-period
 
 module purge
-module load cdo
+module load cdo/2.5.0-gcc-11.2.0
 
 # Percentage of days when TN > 90th percentile
 index="tn90pETCCDI" 

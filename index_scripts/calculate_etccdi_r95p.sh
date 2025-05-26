@@ -2,7 +2,7 @@
 # CC-BY Lukas Brunner (lukas.brunner@uni-hamburg.de)
 
 module purge
-module load cdo
+module load cdo/2.5.0-gcc-11.2.0
 
 # Annual total PRCP when RR > 95p.
 index="r95pETCCDI"  

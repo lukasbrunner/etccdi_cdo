@@ -2,7 +2,7 @@
 # CC-BY Lukas Brunner (lukas.brunner@uni-hamburg.de)
 
 module purge
-module load cdo
+module load cdo/2.5.0-gcc-11.2.0
 export CDO_PCTL_NBINS=302
 
 # Warm speel duration index: Annual count of days with at least 6 consecutive days when TX > 90th percentile

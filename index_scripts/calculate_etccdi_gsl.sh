@@ -2,7 +2,7 @@
 # CC-BY Lukas Brunner (lukas.brunner@uni-hamburg.de)
 
 module purge
-module load cdo
+module load cdo/2.5.0-gcc-11.2.0
 
 # Growing season length: Annual (1st Jan to 31st Dec in Northern Hemisphere (NH), 1st July to 30th June in Southern Hemisphere (SH)) count between first span of at least 6 days with daily mean temperature TG>5oC and first span after July 1st (Jan 1st in SH) of 6 days with TG<5oC. 
 index="gslETCCDI"  

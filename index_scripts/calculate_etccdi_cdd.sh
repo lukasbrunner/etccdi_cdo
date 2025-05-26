@@ -2,7 +2,7 @@
 # CC-BY Lukas Brunner (lukas.brunner@uni-hamburg.de)
 
 module purge
-module load cdo
+module load cdo/2.5.0-gcc-11.2.0
 
 # Maximum length of dry spell, maximum number of consecutive days with RR < 1mm
 index="cddETCCDI" 
@@ -13,7 +13,7 @@ source functions.sh
 process_input $@
 
 source settings.sh  
-freq="full"  # only annual output for this index; overwrite
+freq="ann"  # only annual output for this index; overwrite
 
 outfile=$(create_filename $outdir $outfile_base $index $freq $window $startboot $endboot)
 skip_existing $outfile $overwrite
